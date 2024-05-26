@@ -1,0 +1,81 @@
+<nav class="navbar sticky-top navbar-expand-lg custom-nav">
+  <div class="container-fluid">
+    <h4 style="color: #fcfcfc">User Management System</h4>
+
+    <!-- <div class="">
+      <button
+        class="navbar-toggler justify-content-space-between"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div> -->
+
+    <div class="col-md-8 col-sm-8 text-end">
+      <div>
+        <div
+          class="d-flex justify-content-space-between"
+          class="menu_icon"
+          [class.menu_iconClass]="menu_icon_variable"
+          (click)="openMenu()"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <div
+        class="collapse navbar-collapse d-flex menu"
+        [class.menuClasses]="menuVariable"
+        id="navbarNav"
+      >
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a
+              class="active list-style"
+              *ngIf="!isAuthenticated"
+              routerLink="auth"
+              >Login</a
+            >
+            <a
+              class="active list-style"
+              *ngIf="isAuthenticated"
+              (click)="logout()"
+              >Logout</a
+            >
+            <a
+              class="active list-style"
+              routerLink="form"
+              (click)="navigatePath()"
+              *ngIf="isAuthenticated"
+              >Form</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="active list-style"
+              routerLink="information"
+              *ngIf="isAuthenticated"
+              >Information</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="active list-style"
+              routerLink="user"
+              *ngIf="isAuthenticated"
+              >Users</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div></div>
+    </div>
+  </div>
+</nav>

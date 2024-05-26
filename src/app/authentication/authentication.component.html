@@ -1,0 +1,68 @@
+<div class="container-fluid">
+  <div class="image-background"></div>
+  <div class="overlay-form">
+    <div class="form-body">
+      <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+        <div class="form-group">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-control custom-input"
+            [(ngModel)]="email"
+            #emailInput="ngModel"
+            required
+          />
+          <span
+            class="error-message"
+            *ngIf="
+              emailInput.valid === false &&
+              (emailInput.touched || emailInput.dirty)
+            "
+            >*Email is required</span
+          >
+          <span class="error-message" *ngIf="emailInput.errors?.['email']"
+            >Email must be valid.</span
+          >
+          <br />
+        </div>
+        <div class="form-group">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control custom-input"
+            [(ngModel)]="password"
+            #passwordInput="ngModel"
+            required
+            minlength="6"
+          />
+          <span
+            class="error-message"
+            *ngIf="
+              emailInput.valid === false &&
+              (emailInput.touched || emailInput.dirty)
+            "
+            >*Password is required.</span
+          >
+          <span
+            class="error-message"
+            *ngIf="passwordInput.errors?.['minlength']"
+          >
+          </span>
+        </div>
+        <br />
+        <button
+          class="btn btn-success"
+          type="submit"
+          (click)="onSwitchMode()"
+          [disabled]="!authForm.valid"
+        >
+          Login
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
